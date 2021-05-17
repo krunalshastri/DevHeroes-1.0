@@ -2,6 +2,8 @@ import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
+
 import PropTypes from 'prop-types';
 
 const Register = (props) => {
@@ -26,7 +28,7 @@ const Register = (props) => {
 
     if (password !== password2)
       props.setAlert('Passwords do not match!', 'danger');
-    else console.log(formData);
+    else props.register({ name, email, password });
   }
   return (
     <Fragment>
@@ -52,6 +54,7 @@ const Register = (props) => {
             name='email'
             value={email}
             onChange={handleOnChange}
+            required
           />
           <small className='form-text'>
             This site uses Gravatar so if you want a profile image, use a
@@ -89,6 +92,7 @@ const Register = (props) => {
 
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert })(Register);
+export default connect(null, { setAlert, register })(Register);

@@ -13,8 +13,8 @@ router
     body('email', 'Please include a valid email!').isEmail(),
     body(
       'password',
-      'Please enter a password having 6 or more characters!'
-    ).isLength({ min: 6 }),
+      'Please enter a password having 4 or more characters!'
+    ).isLength({ min: 4 }),
     async (req, res) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -27,7 +27,7 @@ router
         const U = await User.findOne({ email });
 
         if (U) {
-          res.status(400).json('User already registered!');
+          res.status(400).json({ errors: [{ msg: 'User already exists!' }] });
         }
 
         const avatar = gravatar.url(email, {
