@@ -13,7 +13,7 @@ router
     body('email', 'Please include a valid email!').isEmail(),
     body(
       'password',
-      'Please entter a password having 6 or more characters!'
+      'Please enter a password having 6 or more characters!'
     ).isLength({ min: 6 }),
     async (req, res) => {
       const errors = validationResult(req);
