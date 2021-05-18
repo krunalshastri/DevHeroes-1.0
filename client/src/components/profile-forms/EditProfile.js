@@ -48,13 +48,13 @@ const EditProfile = ({
 
   function handleOnSubmit(event) {
     event.preventDefault();
-    console.log(formData);
+    console.log(formData.twitter);
     createProfile(formData, history, true);
   }
 
   useEffect(() => {
     getCurrentProfile();
-
+    profile !== null && console.log(profile);
     setFormData({
       company: loading || !profile.company ? '' : profile.company,
       website: loading || !profile.website ? '' : profile.website,
@@ -64,11 +64,14 @@ const EditProfile = ({
       githubusername:
         loading || !profile.githubusername ? '' : profile.githubusername,
       bio: loading || !profile.bio ? '' : profile.bio,
-      twitter: loading || !profile.twitter ? '' : profile.twitter,
-      facebook: loading || !profile.facebook ? '' : profile.facebook,
-      linkedin: loading || !profile.linkedin ? '' : profile.linkedin,
-      youtube: loading || !profile.youtube ? '' : profile.youtube,
-      instagram: loading || !profile.instagram ? '' : profile.instagram,
+      twitter: loading || !profile.social.twitter ? '' : profile.social.twitter,
+      facebook:
+        loading || !profile.social.facebook ? '' : profile.social.facebook,
+      linkedin:
+        loading || !profile.social.linkedin ? '' : profile.social.linkedin,
+      youtube: loading || !profile.social.youtube ? '' : profile.social.youtube,
+      instagram:
+        loading || !profile.social.instagram ? '' : profile.social.instagram,
     });
   }, [loading]);
 
