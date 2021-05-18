@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
 import { Link } from 'react-router-dom';
+import DashboardActions from './DashboardActions';
 
 const Dashboard = (props) => {
   useEffect(() => {
@@ -19,7 +20,9 @@ const Dashboard = (props) => {
 
       {!props.profile.loading &&
         (props.profile.profile !== null ? (
-          <Fragment>Show Profile</Fragment>
+          <Fragment>
+            <DashboardActions />
+          </Fragment>
         ) : (
           <Fragment>
             <p>You haven't added a profile yet.</p>

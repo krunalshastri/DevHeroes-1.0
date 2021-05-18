@@ -66,7 +66,7 @@ router
       if (status) profileF.status = status;
       if (githubusername) profileF.githubusername = githubusername;
       if (skills) {
-        profileF.skills = skills.split(',').map((skills) => skills.trim());
+        profileF.skills = skills;
       }
 
       profileF.social = {};

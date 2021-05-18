@@ -25,12 +25,18 @@ export const createProfile =
   (formData, history, edit = false) =>
   async (dispatch) => {
     try {
-      console.log(formData);
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+      };
 
       const res = await axios.post(
         'http://localhost:5000/dev/profile',
-        formData
+        formData,
+        config
       );
+
+      console.log(formData);
+      console.log(edit);
 
       dispatch({
         type: GET_PROFILE,
@@ -38,7 +44,7 @@ export const createProfile =
       });
 
       dispatch(
-        setAlert(edit ? 'Profile updated!' : 'Profile Created!', 'success')
+        setAlert(edit ? 'Profile Updated!' : 'Profile Created!', 'success')
       );
 
       if (!edit) history.push('/dashboard');
