@@ -133,7 +133,7 @@ router.route('/profile/user/:userId').get(async (req, res) => {
   }
 });
 
-//Delete the profile
+//Delete the profile and user
 router.route('/profile').delete(auth_m, async (req, res) => {
   try {
     await Profile.findOneAndRemove({ user: req.user.id });

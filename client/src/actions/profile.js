@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { GET_PROFILE, PROFILE_ERROR } from './types';
+import {
+  ACCOUNT_DELETED,
+  CLEAR_PROFILE,
+  GET_PROFILE,
+  PROFILE_ERROR,
+} from './types';
 
 export const getCurrentProfile = () => async (dispatch) => {
   try {
@@ -25,18 +30,10 @@ export const createProfile =
   (formData, history, edit = false) =>
   async (dispatch) => {
     try {
-      const config = {
-        headers: { 'Content-Type': 'application/json' },
-      };
-
       const res = await axios.post(
         'http://localhost:5000/dev/profile',
-        formData,
-        config
+        formData
       );
-
-      console.log(formData);
-      console.log(edit);
 
       dispatch({
         type: GET_PROFILE,
@@ -64,3 +61,27 @@ export const createProfile =
       });
     }
   };
+
+//Delete account and profile
+export const deleteAccount = () => async (dispatch) => {
+  if (window.confirm('Are you sure want to delete your account?')) {
+    try {
+      const res = await axios.delete('http://localhost:5000/dev/profile');
+
+      dispatch({ type: CLEAR_PROFILE });
+      dispatch({ type: ACCOUNT_DELETED });
+
+      dispatch(
+        setAlert('Your account has been successfully deleted!', 'success')
+      );
+    } catch (err) {
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: {
+          msg: err.response.data,
+          status: err.response.status,
+        },
+      });
+    }
+  }
+};
