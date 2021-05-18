@@ -19,10 +19,14 @@ const Navbar = (props) => {
     </ul>
   );
 
+  function handleOnClick() {
+    props.logout();
+  }
+
   const authLinks = (
     <ul>
       <li>
-        <a href='#!' onClick={props.logout}>
+        <a href='#!' onClick={handleOnClick}>
           <i className='fas fa-sign-out-alt' />{' '}
           <span className='hide-sm'>Logout </span>{' '}
         </a>
