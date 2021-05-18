@@ -55,6 +55,8 @@ router
         linkedin,
       } = req.body;
 
+      console.log(req.body.skills);
+
       const profileF = {};
       profileF.user = req.user.id;
       if (company) profileF.company = company;

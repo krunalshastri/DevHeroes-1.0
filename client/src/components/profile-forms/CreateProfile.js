@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { createProfile } from '../../actions/profile';
 
 const CreateProfile = (props) => {
   const [formData, setFormData] = useState({
@@ -34,8 +36,14 @@ const CreateProfile = (props) => {
   } = formData;
 
   const [showSocialMedia, setSocialMedia] = useState(false);
+  let history = useHistory();
   function handleOnChange(event) {
-    setFormData({ ...formData, [event.target.name]: [event.target.value] });
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  }
+
+  function handleOnSubmit(event) {
+    event.preventDefault();
+    props.createProfile(formData, history);
   }
 
   return (
@@ -46,7 +54,7 @@ const CreateProfile = (props) => {
         profile stand out
       </p>
       <small>* = required field</small>
-      <form className='form'>
+      <form className='form' onSubmit={handleOnSubmit}>
         <div className='form-group'>
           <select name='status' value={status} onChange={handleOnChange}>
             <option value='0'>* Select Professional Status</option>
@@ -212,6 +220,8 @@ const CreateProfile = (props) => {
   );
 };
 
-CreateProfile.propTypes = {};
+CreateProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+};
 
-export default CreateProfile;
+export default connect(null, { createProfile })(CreateProfile);
