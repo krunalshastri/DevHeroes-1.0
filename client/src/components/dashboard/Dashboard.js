@@ -8,7 +8,7 @@ import DashboardActions from './DashboardActions';
 const Dashboard = (props) => {
   useEffect(() => {
     props.getCurrentProfile();
-  }, []);
+  }, [props.getCurrentProfile]);
 
   return (
     <Fragment>

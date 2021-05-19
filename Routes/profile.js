@@ -4,7 +4,7 @@ const Profile = require('../Models/profileModel');
 const User = require('../Models/userModel');
 const { body, validationResult } = require('express-validator');
 const { findOneAndUpdate } = require('../Models/profileModel');
-const request = require('request');
+const e = require('express');
 
 //get current user profile
 router.route('/profile').get(auth_m, async (req, res) => {
@@ -66,7 +66,9 @@ router
       if (status) profileF.status = status;
       if (githubusername) profileF.githubusername = githubusername;
       if (skills) {
-        profileF.skills = skills;
+        if (!Array.isArray(skills)) {
+          profileF.skills = skills.split(',').map((skills) => skills.trim());
+        }
       }
 
       profileF.social = {};
@@ -104,7 +106,7 @@ router
 //Get all the profiles
 router.route('/profile/all').get(async (req, res) => {
   try {
-    const profiles = await Profile.find().populate('users', ['name', 'avatar']);
+    const profiles = await Profile.find().populate('user', ['name', 'avatar']);
     res.json(profiles);
   } catch (err) {
     console.error(err.message);

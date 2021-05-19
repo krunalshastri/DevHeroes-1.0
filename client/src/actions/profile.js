@@ -108,7 +108,7 @@ export const createProfile =
 export const deleteAccount = () => async (dispatch) => {
   if (window.confirm('Are you sure want to delete your account?')) {
     try {
-      const res = await axios.delete('http://localhost:5000/dev/profile');
+      await axios.delete('http://localhost:5000/dev/profile');
 
       dispatch({ type: CLEAR_PROFILE });
       dispatch({ type: ACCOUNT_DELETED });
