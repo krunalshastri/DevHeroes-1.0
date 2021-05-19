@@ -11,6 +11,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import CreateProfile from './components/profile-forms/CreateProfile';
 import EditProfile from './components/profile-forms/EditProfile';
 import Profiles from './components/profiles/Profiles';
+import ProfileById from './components/profiles/ProfileById';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -38,6 +39,7 @@ function App() {
               <Route exact path='/login' component={Login} />
               <Route exact path='/register' component={Register} />
               <Route exact path='/profiles' component={Profiles} />
+              <Route exact path='/profiles/:id' component={ProfileById} />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
               <PrivateRoute
                 exact

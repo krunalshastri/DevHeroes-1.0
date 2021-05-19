@@ -85,7 +85,7 @@ const EditProfile = ({
           ? ''
           : profile.social.instagram,
     });
-  }, [loading, getCurrentProfile, profile]);
+  }, [loading, getCurrentProfile]);
 
   return (
     <Fragment>
