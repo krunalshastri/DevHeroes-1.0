@@ -48,7 +48,6 @@ const EditProfile = ({
 
   function handleOnSubmit(event) {
     event.preventDefault();
-    console.log(formData.twitter);
     createProfile(formData, history, true);
   }
 

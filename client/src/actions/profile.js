@@ -11,7 +11,7 @@ import {
 //get current profile
 export const getCurrentProfile = () => async (dispatch) => {
   try {
-    const res = await axios.get('http://localhost:5000/dev/profile');
+    const res = await axios.get('/dev/profile');
     dispatch({
       type: GET_PROFILE,
       payload: res.data,
@@ -30,7 +30,7 @@ export const getCurrentProfile = () => async (dispatch) => {
 //get all profiles
 export const getProfiles = () => async (dispatch) => {
   try {
-    const res = await axios.get('http://localhost:5000/dev/profile/all');
+    const res = await axios.get('/dev/profile/all');
     dispatch({
       type: GET_PROFILES,
       payload: res.data,
@@ -49,9 +49,7 @@ export const getProfiles = () => async (dispatch) => {
 //get profile by id
 export const getProfileById = (userId) => async (dispatch) => {
   try {
-    const res = await axios.get(
-      `http://localhost:5000/dev/profile/user/${userId}`
-    );
+    const res = await axios.get(`/dev/profile/user/${userId}`);
     dispatch({
       type: GET_PROFILE,
       payload: res.data,
@@ -72,10 +70,7 @@ export const createProfile =
   (formData, history, edit = false) =>
   async (dispatch) => {
     try {
-      const res = await axios.post(
-        'http://localhost:5000/dev/profile',
-        formData
-      );
+      const res = await axios.post('/dev/profile', formData);
 
       dispatch({
         type: GET_PROFILE,
@@ -108,7 +103,7 @@ export const createProfile =
 export const deleteAccount = () => async (dispatch) => {
   if (window.confirm('Are you sure want to delete your account?')) {
     try {
-      await axios.delete('http://localhost:5000/dev/profile');
+      await axios.delete('/dev/profile');
 
       dispatch({ type: CLEAR_PROFILE });
       dispatch({ type: ACCOUNT_DELETED });

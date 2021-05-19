@@ -1,6 +1,6 @@
 /* Global Styles */
 :root {
-  --primary-color: #11cbd7;
+  --primary-color: #52734d;
   --dark-color: #2e3031;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
@@ -60,6 +60,11 @@ img {
 .lead {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+}
+
+.loca {
+  font-size: 1.2rem;
+  margin-bottom: 0.7rem;
 }
 
 .text-center {
@@ -309,7 +314,7 @@ button {
   z-index: 1;
   width: 100%;
   top: 0;
-  border-bottom: solid 1px var(--primary-color);
+  border-bottom: solid 1px #ddffbc;
   opacity: 0.9;
 }
 
@@ -324,7 +329,7 @@ button {
 }
 
 .navbar a:hover {
-  color: var(--primary-color);
+  color: #ddffbc;
 }
 
 .navbar .welcome span {
@@ -510,6 +515,10 @@ button {
 
   .lead {
     font-size: 1rem;
+  }
+
+  .loca {
+    font-size: 0.7rem;
   }
 
   /* Navbar */
