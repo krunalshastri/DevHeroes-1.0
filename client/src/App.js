@@ -11,7 +11,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import CreateProfile from './components/profile-forms/CreateProfile';
 import EditProfile from './components/profile-forms/EditProfile';
 import Profiles from './components/profiles/Profiles';
-import ProfileById from './components/profiles/ProfileById';
+import ProfileById from './components/profilebyid/ProfileById';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
